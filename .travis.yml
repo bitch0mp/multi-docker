@@ -1,0 +1,23 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t bitch0mp/docker-react -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true bitch0mp/docker-react npm test
+#  - docker run bitch0mp/react-test npm test -- --coverage
+
+after_success:
+  - docker build -t bitch0mp/multi-client ./client
+  - docker build -t bitch0mp/multi-nginx ./nginx
+  - docker build -t bitch0mp/multi-server ./server
+  - worker-build -t bitch0mp/multi-worker ./worker
+  # Log in to Docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take images and push to Dockerhub
+  - docker push bitch0mp/multi-client
+  - docker push bitch0mp/muti-nginx
+  - docker push bitch0mp/multi-server
+  - docker push bitch0mp/multi-worker
