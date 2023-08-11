@@ -13,7 +13,7 @@ after_success:
   - docker build -t bitch0mp/multi-client ./client
   - docker build -t bitch0mp/multi-nginx ./nginx
   - docker build -t bitch0mp/multi-server ./server
-  - worker-build -t bitch0mp/multi-worker ./worker
+  - docker-build -t bitch0mp/multi-worker ./worker
   # Log in to Docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take images and push to Dockerhub
