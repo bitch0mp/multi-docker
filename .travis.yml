@@ -18,6 +18,6 @@ after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take images and push to Dockerhub
   - docker push bitch0mp/multi-client
-  - docker push bitch0mp/muti-nginx
+  - docker push bitch0mp/multi-nginx
   - docker push bitch0mp/multi-server
   - docker push bitch0mp/multi-worker
