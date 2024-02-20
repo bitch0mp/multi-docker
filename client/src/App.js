@@ -18,7 +18,7 @@ function App() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            This will smell amazing! Not at all like feet!
+            I have COVID and life sucks.
           </a>
           <Link to="/">Home</Link>
           <Link to="/otherpage">Other Page</Link>
